@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="" style="">
+			<form action="" method="post" id="form">
+				<input type="text" name="uname" id="" value="" placeholder="用户名"/>
+				<input type="text" name="upwd" id="" value="" placeholder="密码"/>
+				<input type="text" name="uemall" id="uemall" value="" placeholder="邮箱"/>
+				<input type="text" name="web_name" id="" value="" placeholder="网站名称"/>
+				<input type="button" name="submit_btn" id="submit_btn" value="提交" />
+			</form>
+		</div>
+		
+		
+	<script type="text/javascript" src="../../jquery-3.2.1/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript">
+	
+	
+	//信息提交函数
+	$('#submit_btn').click(function () {
+		var uemail = $('#uemall').val();
+		var chk_res = checkEmeail(uemail);
+		if (!chk_res) {
+			alert("邮箱表达式错误，请重新输入");
+			$('#uemall').val("");
+			return;
+		} 
+    	$.post("../controller/web_datebase.php", $('#form').serialize(),function (data) {
+    		var res = JSON.parse(data);
+    		console.log(res);
+    		if (res.code) {
+    			alert(res.msg);
+    			setTimeout(window.location.href ='../../index.php',1000);
+    		} else{
+    			alert(res.msg)
+    		}       
+       });
+  	});
+	//邮箱格式校验函数
+	function checkEmeail(email){
+		var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/; //邮箱js正则
+		if(reg.test(email)){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	</script>
+	</body>
+</html>

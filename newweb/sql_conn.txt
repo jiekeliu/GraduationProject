@@ -1,0 +1,4 @@
+localhost
+newweb26
+root
+root

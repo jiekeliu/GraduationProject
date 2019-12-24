@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="" style="">
+			<form action="" method="post" id="form">
+				<input type="text" name="hostname" id="" value="localhost" placeholder="主机名"/>
+				<input type="text" name="dbname" id="" value="" placeholder="数据名"/>
+				<input type="text" name="username" id="" value="" placeholder="用户名"/>
+				<input type="text" name="pwd" id="" value="" placeholder="密码"/>
+				<input type="button" name="submit_btn" id="submit_btn" value="提交" />
+			</form>
+			
+		</div>
+		
+	<script type="text/javascript" src="../../jquery-3.2.1/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript">
+//	信息提交函数
+	$('#submit_btn').click(function () {
+    	$.post("../controller/web_conn_sql.php", $('#form').serialize(),function (data) {
+    		console.log(data);
+    		var res = JSON.parse(data);
+    		if (res.code) {
+    			alert(res.msg);
+    			setTimeout(window.location.href ='web_datebase.html',1000);
+    		} else{
+    			alert(res.msg);
+    		}
+                  
+       });
+    })
+
+	</script>
+	</body>
+</html>
