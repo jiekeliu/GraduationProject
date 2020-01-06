@@ -1,0 +1,115 @@
+<
+meta http-equiv ="Content-Type" content ="text/html; charset =gb2312"><!--td
+	{
+	font-size: 9pt;
+	color: #000000;
+}
+
+a:hover {
+	font-size: 11pt;
+	color: #red;
+}
+
+a {
+	font-size: 11pt;
+	text-decoration: none;
+	color: #9900CC;
+	font-family: "黑体", 幼圆 "," 方正剪纸简体 ";
+}
+
+.white {
+	font-size: 9pt;
+	color: #FFFFFF;
+}
+
+.top {
+	font-size: 20pt;
+	color: #0000CC;
+	font-family: "黑体";
+}
+
+.head {
+	font-size: 15pt;
+	color: red;
+	font-family: "方正剪纸简体", "黑体";
+}
+
+.he {
+	font-size: 18pt;
+	color: #ffffff;
+	font: "黑体";
+}
+
+.bgcolor {
+	font-size: 9pt;
+	color: #F60;
+}
+
+.txt_grey {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	border: 1px solid #999999;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+.wenbenkuang {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	border: 1px solid #999999;
+}
+
+.shadow {font-size =9pt;
+	filter: DropShadow(Color = #000000, offX = 1, offY = 1, positive = 1);
+	height: 21;
+	color: #AA0000;
+}
+
+.tableborder {
+	background-color: #ffffff;
+	border: #66CCFF 1px solid;
+}
+
+.title {
+	font-size: 16px;
+	background: url("images/background/user_logon.jpg");
+	font-family: "黑体", Helvetica, sans-serif;
+}
+
+.category {
+	background: #66CCFF;
+	font-size: 15pt;
+	font-family: "黑体";
+	color: red;
+	font-family: "幼圆", "黑体", "宋体";
+}
+
+.tableback {
+	background: #5FD2F3;
+}
+
+.tablebottom {
+	background: #E7F8F2;
+}
+
+.tableoddcell {
+	background: #FFE;
+}
+
+.tableevencell {
+	background: #FDF8EE;
+}
+
+.outterborder {
+	background: #FFCCCC;
+}
+
+table {
+	font-size: 12px;
+}
+-->
