@@ -8,7 +8,8 @@ class FileControl{
 	*/
 	 public function fcrate($hostname,$dbname,$username,$pwd){
 		$dpath = dirname(dirname(__FILE__));
-		$sql_conn = $dpath."\sql_conn.txt";
+		$sql_conn = $dpath."/sql_conn.txt";
+//		echo $sql_conn;
 		if(file_exists($sql_conn)){
 			 unlink($sql_conn);
 			 fcrate($hostname,$dbname,$username,$pwd);

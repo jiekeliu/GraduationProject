@@ -19,12 +19,12 @@ class Mysql{
 		    );
 		$mysql_conn = @mysql_connect($mysql_conf['host'], $mysql_conf['db_user'], $mysql_conf['db_pwd']);
 		if (!$mysql_conn) {
-		    die("could not connect to the database:\n" . mysql_error());//诊断连接错误
+		    die("could not connect to the host:\n" . mysql_error());//诊断连接错误
 		}
 		mysql_query("set names 'utf8'");//编码转化
 		$select_db = mysql_select_db($mysql_conf['db']);
 		if (!$select_db) {
-		    die("could not connect to the db:\n" .  mysql_error());
+		    die("could not connect to the database,please create a new database:\n" .  mysql_error());
 		}
 		return $mysql_conn;
 
@@ -36,7 +36,8 @@ class Mysql{
 		trim($arr):去掉字符串两端空格
 	*/
 	 public function sucessConn(){
-		$sql_conn = dirname(dirname(__FILE__))."\sql_conn.txt";
+		$sql_conn = dirname(dirname(__FILE__))."/sql_conn.txt";
+		//echo $sql_conn;
 		if(file_exists($sql_conn)){
 			include_once "filecontrol.php";
 			$fobj = new FileControl();

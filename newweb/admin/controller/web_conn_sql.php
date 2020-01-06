@@ -8,15 +8,19 @@ $dbname = $_POST['dbname'];
 $username = $_POST['username'];
 $pwd = $_POST['pwd'];
 if ($hostname == '') {
+	ob_clean();
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：主机不能为空')));
 }
 if ($dbname == '') {
+	ob_clean();
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：数据库不能为空')));
 }
 if ($username == '') {
+	ob_clean();
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：用户名不能为空')));
 }
 if ($pwd == '') {
+	ob_clean();
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：密码不能为空')));
 }
 

@@ -8,7 +8,7 @@ file_exists($sql_conn)：检测文件是否存在
 Header("Location:$url"):域名重定向
 */
 $dpath = dirname(__FILE__);
-$sql_conn = $dpath."\sql_conn.txt";
+$sql_conn = $dpath."/sql_conn.txt";
 if(file_exists($sql_conn)){
 	include_once "model/conn.php";
 	$obj = new Mysql;
