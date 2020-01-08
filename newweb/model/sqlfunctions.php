@@ -232,7 +232,25 @@ class connFun{
 		return $res_arr;
 	}
 	
-	/*function_table表全部查询操作by 用户id
+	/*function_table表查询操作by fid
+	*/
+	public function fun_queryByfid($fid){
+		$str = "SELECT *FROM `function_table` WHERE fid =".$fid;
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($this->mysql_conn);
+		return $res_arr;
+	}
+	
+	/*function_table表查询操作by 用户id
 	*/
 	public function fun_queryByUid($uid){
 		

@@ -7,6 +7,14 @@ if ($fid == '') {
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：功能编号不能为空')));
 }
 include_once "../../model/sqlfunctions.php";
+//数据库删除
+$fun4 = new connFun;
+$fun4_res =$fun4->fun_queryByfid($fid);
+$furl = $fun4_res[0]['furl'];
+include_once "../../model/extrafunction.php";
+$obj = new AxtraFun();
+$status = $obj->deleteMod($furl);
+//功能删除
 $fun = new connFun;
 $fun_res =$fun->fun_delete($fid);
 //权限更改
@@ -21,9 +29,9 @@ $Fid_having = substr($Fid_having, 0, -1);
 $fun3 = new connFun;
 $aut_res =$fun3->authority_update(1, 1, $Fid_having);
 
-if($fun_res && $aut_res){
-	exit(json_encode(array('code'=>1,'msg'=>'更新成功')));
+if($fun_res && $aut_res && $status){
+	exit(json_encode(array('code'=>1,'msg'=>'删除成功')));
 }else{
-	exit(json_encode(array('code'=>0,'msg'=>'更新失败')));
+	exit(json_encode(array('code'=>0,'msg'=>'删除失败')));
 }
 ?>

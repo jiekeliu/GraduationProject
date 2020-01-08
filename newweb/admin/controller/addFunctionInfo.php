@@ -38,7 +38,12 @@ $Fid_having = substr($Fid_having, 0, -1);
 $fun3 = new connFun;
 $aut_res =$fun3->authority_update(1, 1, $Fid_having);
 
-if($fun_res && $aut_res){
+//数据库创建
+include_once "../../model/extrafunction.php";
+$obj = new AxtraFun();
+$status = $obj->createMod($furl);
+
+if($fun_res && $aut_res && $status){
 	exit(json_encode(array('code'=>1,'msg'=>'添加成功')));
 }else{
 	exit(json_encode(array('code'=>0,'msg'=>'添加失败')));
