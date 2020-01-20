@@ -1,0 +1,108 @@
+hr{
+	margin: 10px 0;
+	border-top: 3px solid #fff;
+}
+
+span:hover{
+	color: blue;
+	cursor:pointer;
+}
+
+.content{
+	padding: 20px;
+}
+
+.content:hover{
+	border: 1px solid darkgray;
+	border-radius:5px ;
+}
+
+.ispan{
+	margin: 20px;
+	color: #777777;
+}
+
+.content_title{
+	width: 85%;
+	margin-left:5% ;
+	min-height: 100px;
+	padding: 0 10px;
+	background-color: #EEEEEE;
+	border-radius: 5px;
+	float: left;
+}
+
+.content_title > span{
+	margin-right: 10px;
+	float: right;
+}
+
+
+.content_img{
+	width: 10%;
+	float: left;
+}
+
+.content_img > img{
+	width: 100%;
+}
+
+.content_top{
+	width: 100%;
+}
+
+.answerContennier{
+	margin-top:20px ;
+	margin-left: 5%;
+	width: 95%;
+	display: none;
+	/*background-color: #EEEEEE;*/
+}
+
+.content_text > p{
+	text-indent: 2em;
+}
+.drop{
+	text-align: center;
+	color: #777777;
+}
+
+.listProblems{
+	margin: 20px 0;
+	border-top: 3px solid deepskyblue;
+}
+
+.announce{
+	width: 100%;
+	color: blue;
+	border: 1px solid deepskyblue;
+	background-color: #eee;
+	border-radius:40px 40px 10px 10px ;
+}
+
+.announce > h3{
+	letter-spacing: 8px;
+	text-align: center;
+}
+
+
+.announce > .announce_text{
+	width: 80%;
+	min-height: 200px;
+	margin: 20px auto;
+	background-color: white;
+	border-radius:5px ;
+	border: 1px solid white;
+}
+
+.linkblock{
+	padding: 10px;
+}
+
+.linkblock > span{
+	margin: 5px;
+}
+
+.linkblock > span >a{
+	color: white;
+}

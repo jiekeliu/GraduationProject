@@ -1,6 +1,6 @@
 <?php
 /*
-功能扩展类
+功能扩展日志类
 
 */
 
@@ -47,7 +47,103 @@ class Sqlcontra{
     	return true;
     }
 	
+	/*log表插入操作
+	$ltitle:日志标题
+	$ltime:上传时间
+	$ltext:上传内容
+	*/
 	
+	public function log_insert($ltitle,$ltime,$ltext){
+		include_once $_SERVER['DOCUMENT_ROOT'].'/model/conn.php';
+		$obj = new Mysql;
+		$mysql_conn = $obj->sucessConn();
+		$str = "INSERT INTO `log` (`ltime`, `ltitle`, `ltext`) VALUES ('".$ltime."', '".$ltitle."', '".$ltext."');";
+		$re = mysql_query($str,$mysql_conn);
+        if (!$re) {
+		    die("couldn't get the log tables res:\n" . mysql_error());
+		}
+		mysql_close($mysql_conn);
+		return $re;
+	}
+	
+	/*log表修改操作
+	$ltitle:日志标题
+	$ltime:上传时间
+	$ltext:上传内容
+	$lid:编号
+	*/
+	public function log_update($lid, $ltitle, $ltime, $ltext){
+		include_once $_SERVER['DOCUMENT_ROOT'].'/model/conn.php';
+		$obj = new Mysql;
+		$mysql_conn = $obj->sucessConn();
+		$str = "UPDATE `log` SET `ltime` = '". $ltime."',
+				`ltitle` = '".$ltitle."',
+				`ltext` = '".$ltext."' WHERE `lid` =".$lid.";";
+		$re = mysql_query($str,$mysql_conn);
+        if (!$re) {
+		    die("couldn't get the log tables res:\n" . mysql_error());
+		}
+		mysql_close($mysql_conn);
+		return $re;
+	}
+	
+	/*log表查询操作
+	$ltime:上传时间
+	*/
+	public function log_select($ltime){
+		include_once $_SERVER['DOCUMENT_ROOT'].'/model/conn.php';
+		$obj = new Mysql;
+		$mysql_conn = $obj->sucessConn();
+		$str = "SELECT * FROM `log` WHERE ltime = '".$ltime."';";
+		$re = mysql_query($str,$mysql_conn);
+        if (!$re) {
+		    die("couldn't get the log tables res:\n" . mysql_error());
+		}
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($mysql_conn);
+		return $res_arr;
+	}
+	
+	/*log表查询最后n条操作
+	$num：查询日志数目
+	*/
+	public function log_selectByNum($num){
+		include_once $_SERVER['DOCUMENT_ROOT'].'/model/conn.php';
+		$obj = new Mysql;
+		$mysql_conn = $obj->sucessConn();
+		$str = "SELECT * FROM `log` ORDER BY ltime DESC LIMIT ".$num.";";
+		$re = mysql_query($str,$mysql_conn);
+        if (!$re) {
+		    die("couldn't get the log tables res:\n" . mysql_error());
+		}
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($mysql_conn);
+		return $res_arr;
+	}
+	
+	/*log表删除操作
+	$lid:编号
+	*/
+	public function log_delete($lid){
+		include_once $_SERVER['DOCUMENT_ROOT'].'/model/conn.php';
+		$obj = new Mysql;
+		$mysql_conn = $obj->sucessConn();
+		$str = " DELETE FROM `log` WHERE `lid` =".$lid;
+		$re = mysql_query($str,$mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		mysql_close($mysql_conn);
+		return $re;
+	}
 	
 }
 ?>

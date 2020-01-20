@@ -1,9 +1,41 @@
 $(document).ready(function(){ 
 	getNavigationbar();
+	getFontsetting();
 });	
+//网站根目录获取方法
+function getRootPath(){
+    var strFullPath=window.document.location.href;
+    var strPath=window.document.location.pathname;
+    var pos=strFullPath.indexOf(strPath);
+    var prePath=strFullPath.substring(0,pos);
+    var postPath=strPath.substring(0,strPath.substr(0).indexOf('/')+1);
+    return(prePath+postPath);
+}
+//网站信息获取函数
+function getFontsetting(){
+	var root = getRootPath();
+	path = root + 'index/controller/getFontsettingInfo.php';
+	$.post(path,function (data) {
+		var data = JSON.parse(data);
+		setFontsetting(data)
+	});
+}
+
+//网站信息设置函数
+function setFontsetting(data){
+	$("title").html(data[0]['web_name']);
+	$("#footer_text").html(data[0]['webfooter_info']);
+	var root = getRootPath();
+	img_path = root + data[0]['webimg_url'];
+	$("#web_img").attr('src',img_path);
+	console.log(data);
+}
+
 //导航条设置函数	
 function getNavigationbar(){
-	$.post("../controller/index.php",function (data) {
+	var root = getRootPath();
+	path = root + 'index/controller/index.php';
+	$.post(path,function (data) {
 		seeCookie();
     	var res = JSON.parse(data);
     	var bar_data = [];
@@ -29,11 +61,11 @@ function getNavigationbar(){
 					    +"</a>"
 					    +"<ul class='dropdown-menu'>";
 				str +="<li role='presentation'>"
-					+"<a href='"+value['turl']+"'>"+value['tname']+"</a>"
+					+"<a href='"+root+value['turl']+"'>"+value['tname']+"</a>"
 					+"</li>";
 				$.each(bar_data[id],function(index2,value2){
 					str += "<li role='presentation'>"
-					+"<a href='"+value2['turl']+"'>"+value2['tname']+"</a>"
+					+"<a href='"+root+value2['turl']+"'>"+value2['tname']+"</a>"
 					+"</li>";
 				});	
 				str +="</ul></li>";
@@ -41,7 +73,7 @@ function getNavigationbar(){
 				
 			} else{
 				var str = "<li role='presentation'>"
-				+"<a href='"+value['turl']+"' id='"+value['turl']+"'>"+value['tname']+"</a>"
+				+"<a href='"+root+value['turl']+"' id='"+value['turl']+"'>"+value['tname']+"</a>"
 				+"</li>";
 		    	$('#ul').append(str);
 			}
@@ -53,11 +85,11 @@ function getNavigationbar(){
 //cookie检测函数
 function seeCookie(){
 	var ckie = getCookie('url');
-	//console.log(ckie);
+	var root = getRootPath();
 	if (!ckie) {
-		$('#cub').append("<li><a href='dologin.html'>登录</a></li><li><a href='registation.html'>注册</a></li>");
+		$('#cub').append("<li><a href='"+root+"index/view/dologin.html'>登录</a></li><li><a href='registation.html'>注册</a></li>");
 	} else{
-		$('#cub').append("<li><a href='../../admin/view/index.html'>控制台</a></li><li><a href='javascript:;' onclick='delCookie();'>退出</a></li>");
+		$('#cub').append("<li><a href='"+root+"admin/view/index.html'>控制台</a></li><li><a href='javascript:;' onclick='delCookie();'>退出</a></li>");
 	}
 }
 //cookic查询函数
@@ -88,7 +120,7 @@ function deleteCookie() {
         }
     }
 }
-
+//删除cookie函数
 function delCookie(){
 	deleteCookie();
 	alert('退出成功');

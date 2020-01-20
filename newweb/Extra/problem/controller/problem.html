@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人测试：Jsonker学习网站</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/problem.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	
+ <!----------------------------------主体内容------------------------------------------------>
+  	<p id="hiddenpage" hidden>1</p>
+  	<div class="header">
+		  <span>问题列表</span>
+		  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>
+		  <div></div>
+		</div>
+  	<div id="" style="height: 10px; width: 100%;"></div>
+  	<div class="row">
+		  <div class="col-xs-12 col-md-12 ">
+		  	<div class="table-responsive">
+				  <table class="table table-hover table-striped" id="itable">
+			  		<tr>
+			  			<th>编号</th>
+			  			<th style="width: 50%;">内容</th>
+			  			<th>提问时间</th>
+			  			<th>问题类别</th>
+			  			<th>状态</th>
+			  			<th></th>
+			  			<th></th>
+			  			<th></th>
+			  			<th></th>
+			  		</tr>
+			  	</table>
+				</div>
+		  </div>
+		</div>
+	
+	
+	<nav aria-label="Page navigation" style="text-align: center;" class="navbar-fixed-bottom">
+	  <ul class="pagination">
+	    <li>
+	      <a href="#" aria-label="Previous" onclick="pageContro(false);">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	     
+	    <li id="pageli">
+	      <a href="#" aria-label="Next" onclick="pageContro(true);">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+<!----------------------------------主体内容------------------------------------------------>
+
+<!----------------------------------模态框-添加------------------------------------------------->
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">添加问题</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form style="text-align: center;" id="addform">	
+						<div class="form-group">
+						    <label class="sr-only" for="Ptext">Ptext</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">连接地址</div>
+						      	<input type="text" class="form-control" id="Ptext" name="Ptext" placeholder="问题">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label class="sr-only" for="Ptype">Ptype</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">问题类型</div>
+						      	<select class="form-control" id="Ptype" name="Ptype">
+							      	<option >PYTHON</option>
+							      	<option >PHP</option>
+							      	<option >HTML</option>
+							      	<option >CSS</option>
+							      	<option >JS</option>
+							      	<option >JAVA</option>
+							      	<option >LINUX</option>
+							      	<option >学习</option>
+							      	<option >生活</option>
+							      	<option >情感</option>
+							      	<option >工作</option>
+							      	<option >其他</option>
+										</select>
+						    </div>
+						</div>
+					
+					</form>
+	    	</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" onclick="addProblem();">提交</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<!----------------------------------模态框-添加----------------------------------------------->
+
+<!----------------------------------模态框-修改----------------------------------------------->
+	<!-- Modal -->
+		<div class="modal fade" id="changeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">功能信息修改</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form style="text-align: center;" id="changeform">
+						<div class="form-group">
+						    <label class="sr-only" for="cPid">Pid</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">问题编号</div>
+						      	<input type="text" class="form-control" id="cPid" name="Pid">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label class="sr-only" for="cPtext">Ptext</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">内容</div>
+						      	<input type="text" class="form-control" id="cPtext" name="Ptext">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label class="sr-only" for="cPtime">Ptime</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">提交时间</div>
+						      	<input type="text" class="form-control" id="cPtime" name="Ptime">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label class="sr-only" for="cPtype">Ptype</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">问题类型</div>
+						      	<select class="form-control" id="cPtype" name="Ptype">
+							      	<option >PYTHON</option>
+							      	<option >PHP</option>
+							      	<option >HTML</option>
+							      	<option >CSS</option>
+							      	<option >JS</option>
+							      	<option >JAVA</option>
+							      	<option >LINUX</option>
+							      	<option >学习</option>
+							      	<option >生活</option>
+							      	<option >情感</option>
+							      	<option >工作</option>
+							      	<option >其他</option>
+										</select>
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label class="sr-only" for="cPstatus">Pstatus</label>
+						    <div class="input-group">
+						      	<div class="input-group-addon">状态</div>
+						      	<input type="text" class="form-control" id="cPstatus" name="Pstatus">
+						    </div>
+						</div>
+			   	</form>  
+						    
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-primary" onclick="changeProblemDeed();">提交</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!----------------------------------模态框-修改----------------------------------------------->
+
+<!----------------------------------模态框-删除----------------------------------------------->
+<!-- Small modal -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+			<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		    <h4 class="modal-title" id="myModalLabel">警告</h4>
+		  </div>
+		  <div class="modal-body">
+			        你正在删除id=<p id="duid"></p>的功能，请确定你的想法
+			  </div>
+		  <div class="modal-footer">
+		    <button type="button" class="btn btn-default" data-dismiss="modal">点错了</button>
+		    <button type="button" class="btn btn-primary" onclick="delProblem();">确定</button>
+		  </div>
+    </div>
+  </div>
+</div>
+<!----------------------------------模态框-删除----------------------------------------------->
+
+<!----------------------------------模态框-答案列表----------------------------------------------->
+	<!-- Modal -->
+		<div class="modal fade" id="answerModel" tabindex="-1" role="dialog" aria-labelledby="answerlist">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="answerlist"></h4>
+		      </div>
+		      <div class="modal-body" id="anslistbody">
+ 	
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!----------------------------------模态框-答案列表----------------------------------------------->
+
+<!----------------------------------模态框-回答----------------------------------------------->
+	<!-- Modal -->
+		<div class="modal fade" id="answerModel2" tabindex="-1" role="dialog" aria-labelledby="answerlist2">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="answerlist2"></h4>
+		      </div>
+		      <div class="modal-body">
+ 							<textarea class='form-control' rows='10' id='Atext'></textarea>
+ 							<div style="width: 100%; height: 20px;"></div>
+ 							<button type='button' class='btn btn-warning btn-block' onclick="addAnswer();">提交</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!----------------------------------模态框-回答----------------------------------------------->
+
+    <script src="../../../jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/problem.js"></script>
+  </body>
+</html>
