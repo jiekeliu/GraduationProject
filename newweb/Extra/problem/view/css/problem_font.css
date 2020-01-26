@@ -75,6 +75,7 @@ span:hover{
 .announce{
 	width: 100%;
 	color: blue;
+	margin-top:20px ;
 	border: 1px solid deepskyblue;
 	background-color: #eee;
 	border-radius:40px 40px 10px 10px ;
@@ -92,7 +93,7 @@ span:hover{
 	margin: 20px auto;
 	background-color: white;
 	border-radius:5px ;
-	border: 1px solid white;
+	border: 1px solid deepskyblue;
 }
 
 .linkblock{

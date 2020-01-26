@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人测试：Jsonker学习网站</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/translation_font.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<!-- 顶部导航 -->
+	<div class="headerpage"></div>
+	<!--顶部导航 over-->    
+	
+	<!--中部主体--> 
+	<div class="container">
+		<span class="glyphicon glyphicon-flag ispan" id="log">&nbsp;&nbsp;汉译文档</span>
+	</div>
+	<div class="container">
+		<div class="row">
+			<!----------------------------分割线-----left----------------------------------->
+			<div class="col-xs-12 col-md-9" >
+				
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div style="width: 100%; height: 10px;"></div>
+						<div class="input-group">
+					    <input type="text" class="form-control" id="C_time" name="C_time" placeholder="关键词检索">
+					    <div class="input-group-addon">
+					      <span class="glyphicon glyphicon-search" onclick=";"></span>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="col-xs-12 col-md-6">
+							<div style="width: 100%; height: 10px;"></div>
+				    	<div class="input-group">
+					      <select class="form-control" id="C_type" name="C_type">
+									<option >PYTHON</option>
+									<option >PHP</option>
+									<option >HTML</option>
+									<option >CSS</option>
+									<option >JS</option>
+									<option >JAVA</option>
+									<option >LINUX</option>
+									<option >学习</option>
+									<option >生活</option>
+									<option >情感</option>
+									<option >工作</option>
+									<option >其他</option>
+								</select>
+					      <div class="input-group-addon">
+					      	<span class="glyphicon glyphicon-search" onclick=";"></span>
+					      </div>
+					    </div>
+					</div>
+				</div>
+				<div style="width: 100%; height: 10px;"></div>
+				<div class="div_content" style="height: 1000px;">
+					
+				</div>
+			</div>
+			
+			<!----------------------------分割线-----left----------------------------------->
+			<!----------------------------分割线-----right----------------------------------->
+			<div class="col-xs-12 col-md-3">
+					<div style="width: 100%; height: 10px;"></div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							<p class="right_title">日积月累</p>
+							<form >
+							  <textarea class="form-control" rows="5" placeholder="翻译框" id="pre_str" name="pre_str"></textarea>
+							  <div style="width: 100%; height: 20px;"></div>
+							  <textarea class="form-control" rows="5" placeholder="结果框" id="res_str" name="res_str"></textarea>
+							  <div style="width: 100%; height: 20px;"></div>
+							  <select class="form-control" id="pre_select" name="pre_select">
+									<option>只翻译不保存</option>
+									<option>翻译且保存</option>
+								</select>
+							</form>
+							<div style="width: 100%; height: 20px;"></div>
+							<button type="button" class="btn btn-info btn-block" onclick="translationStr('zh-CN');">英译汉</button>
+							<div style="width: 100%; height: 20px;"></div>
+							<button type="button" class="btn btn-success btn-block" onclick="translationStr('en');">汉译英</button>
+						</div>
+					</div>
+					
+					<div style="width: 100%; height: 30px;"></div>
+					
+					<ul class="nav nav-pills nav-stacked">
+					  <li role="presentation" class="active" id="wordclub"><a href=" javascript:;">词库</a></li>
+					</ul>
+			</div>
+			<!----------------------------分割线-----right----------------------------------->
+		</div>
+	</div>
+	<!--中部主体 over-->  
+	<!--footer-->  
+	<div style="height: 50px; width: 100%;"></div>
+	<div class="footerpage"></div>
+	<!--footer over-->
+
+    <script src="../../../jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../index/js/header.js"></script>
+    <script src="js/translation_font.js"></script>
+  </body>
+</html>

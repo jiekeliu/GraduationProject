@@ -28,7 +28,6 @@ function setFontsetting(data){
 	var root = getRootPath();
 	img_path = root + data[0]['webimg_url'];
 	$("#web_img").attr('src',img_path);
-	console.log(data);
 }
 
 //导航条设置函数	

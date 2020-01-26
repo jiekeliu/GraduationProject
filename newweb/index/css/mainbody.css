@@ -1,0 +1,33 @@
+
+.roundChart{
+	width: 100%;
+	height: 300px;
+}
+.container-fluid{
+	padding: 0;
+	margin: 0;
+}
+
+.item img{
+	width: 100%;
+}
+
+.spance20px{
+	width: 100%;
+	height: 20px;
+}
+
+.box150height{
+	width: 100%;
+	height: 150px;
+	border: 1px solid grey;
+	border-radius:5px ;
+	margin: 10px auto;
+}
+
+.boxfullcoutainer{
+	width: 100%;
+	margin: 10px auto;
+	border: 1px solid grey;
+	border-radius:5px ;
+}
