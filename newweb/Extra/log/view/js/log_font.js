@@ -1,6 +1,4 @@
 $(document).ready(function(){ 
-	$(".headerpage").load("../../../index/view/header.html");
-	$(".footerpage").load("../../../index/view/footer.html");
 	getFontLog();
 });
 

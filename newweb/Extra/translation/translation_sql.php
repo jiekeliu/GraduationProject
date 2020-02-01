@@ -181,6 +181,84 @@ class Sqlcontra{
 		return $res_arr;
 	}
 	
+	/*english_document表标题和id查询操作
+	*/
+	public function document_selectAllTitle(){
+		$str = "SELECT `Cid` , `C_title` , `C_type` FROM `english_document` ORDER BY C_time DESC LIMIT 0 , 30";
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($this->mysql_conn);
+		return $res_arr;
+	}
+	
+	/*english_document表标题和id查询操作通过模糊匹配
+	 * $str：匹配语句
+	*/
+	public function document_selectTitleByBlurry($str){
+		$str = "SELECT `Cid` , `C_title` , `C_type` FROM `english_document`
+				WHERE `C_title` LIKE '%".$str."%'";
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($this->mysql_conn);
+		return $res_arr;
+	}
+	
+	/*english_document表标题和id查询操作通过类型
+	 * $C_type：类型
+	*/
+	public function document_selectTitleByType($C_type){
+		$str = "SELECT `Cid` , `C_title` , `C_type` FROM `english_document`
+				WHERE `C_type` = '".$C_type."';";
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($this->mysql_conn);
+		return $res_arr;
+	}
+	
+	/*english_document表查询操作通过Cid
+	 * $Cid：编号
+	*/
+	public function document_selectByCid($Cid){
+		$str = "SELECT * FROM `english_document`
+				WHERE `Cid` = ".$Cid;
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		
+		$res_arr = array();
+		while ($row = mysql_fetch_assoc($re,MYSQL_ASSOC))
+		{
+			array_push($res_arr, $row);
+		}
+		mysql_close($this->mysql_conn);
+		return $res_arr;
+	}
+	
 	/*wordclub查询操作*/
 	public function wordclub_selectAll(){
 		$str = "SELECT * FROM `wordclub`;";
@@ -212,6 +290,17 @@ class Sqlcontra{
 		return $re;
 	}
 	
-	
+	/*wordclub表删除操作
+	$Wid：编号
+	*/
+	public function wordclub_delect($Wid){
+		$str = "DELETE FROM `wordclub` WHERE Wid =".$Wid;
+		$re = mysql_query($str,$this->mysql_conn);
+        if (!$re) {
+		    die("couldn't get the res:\n" . mysql_error());
+		}
+		mysql_close($this->mysql_conn);
+		return $re;
+	}
 }
 ?>

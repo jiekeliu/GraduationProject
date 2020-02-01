@@ -76,6 +76,10 @@ function resetHeight(){
 }
 //链接转换函数
 function linkIframe(a){
+	if ($(window).width() < 768) {
+	    //点击导航链接之后，把导航选项折叠起来
+	    $("#bs-example-navbar-collapse-1").collapse('hide');
+   	}
     var str = a;
     $('#iframe').attr('src',str);
 }
