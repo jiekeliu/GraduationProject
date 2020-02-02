@@ -26,7 +26,7 @@
 								<input type="file" name="myFile" id="file" onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
 								<p class="help-block">在这里选择你想要的上传的文件</p>
 							</div>
-							<input type ="button" value="上传" onclick="uploadImg();"/>
+							<input type ="button" class="btn btn-warning" id="sub" value="上传" onclick="uploadImg();"/>
 						</form> 
 						<div style="width: 100%; height: 20px;"></div>
 						<div id="img_status" style="width: 100%; height: 50px;">
@@ -35,7 +35,7 @@
 						<div style="width: 100%; height: 20px;"></div>
 						<div class="row">
 							<label class="control-label">扩展：</label>
-							<textarea class="form-control" rows="5" id="plan" name="plan"></textarea>
+							<textarea class="form-control" rows="5" id="Eextra"></textarea>
 						</div>
 						<div style="width: 100%; height: 20px;"></div>
 					  </div>
@@ -43,13 +43,13 @@
 					
 					<div class="row">
 						<label class="control-label">描述：</label>
-						<textarea class="form-control" rows="8" id="plan" name="plan"></textarea>
+						<textarea class="form-control" rows="8" id="Edescription"></textarea>
 					</div>
 				</div>
 	<!---------------------------------------------right----------------------------------------->
 				<div class="col-xs-12 col-md-4">
 					<div class="page-header">
-					  <h3 id="Sname">名称 </h3>
+					  <h4 id="Sname">名称 </h4>
 					</div>
 					
 					<div class="input-group">
@@ -72,7 +72,21 @@
 					
 					<div class="input-group">
 					  <span class="input-group-addon" >资源类型</span>
-					  <input type="text" id="Stype" class="form-control" aria-describedby="basic-addon1">
+					  <select class="form-control" id="Stype">
+								<option >PYTHON</option>
+								<option >PHP</option>
+								<option >HTML</option>
+								<option >CSS</option>
+								<option >JS</option>
+								<option >JAVA</option>
+								<option >LINUX</option>
+								<option >学习</option>
+								<option >生活</option>
+								<option >情感</option>
+								<option >工作</option>
+								<option >其他</option>
+								<option >img_add</option>
+					  </select>
 					</div>
 					<div style="width: 100%; height: 20px;"></div>
 					
@@ -84,7 +98,7 @@
 					
 					<div class="input-group">
 					  <span class="input-group-addon" >伪装标题</span>
-					  <input type="text" class="form-control" aria-describedby="basic-addon1">
+					  <input type="text" id="Efake" class="form-control" aria-describedby="basic-addon1">
 					</div>
 					<div style="width: 100%; height: 20px;"></div>
 					
@@ -94,11 +108,11 @@
 					</div>
 					<div style="width: 100%; height: 20px;"></div>
 					
-					<button type="button" class="btn btn-primary btn-lg btn-block">修改资源项</button>
+					<button type="button" id="updataS" class="btn btn-primary btn-lg btn-block" onclick="updatareSources();">修改资源项</button>
 					
 					<div style="width: 100%; height: 20px;"></div>
 					
-					<button type="button" class="btn btn-default btn-lg btn-block">删除资源项</button>
+					<button type="button" class="btn btn-default btn-lg btn-block" onclick="delreSources();">删除资源项</button>
 					
 				</div>
 			</div>

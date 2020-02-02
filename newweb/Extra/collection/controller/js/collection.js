@@ -96,7 +96,7 @@ function getDetails(Sid){
       type: 'POST',
       url: "php/doAction.php?Stype="+Stype,  //当前路径
       data: data,
-      dataType: 'json',
+//    dataType: 'json',
       processData: false,  //序列化，no
       contentType: false,  //不设置内容类型
       beforeSend: function(){
@@ -105,14 +105,17 @@ function getDetails(Sid){
       //进度条要调用原生xhr
       xhr:xhrOnProgress(function(evt){
         percent = Math.floor(evt.loaded / evt.total*100);//计算百分比
-        if (percent >= 100) {
-        	uploading = false;
-        	alert('上传成功');
-        	window.location.reload();
-        }
         // 设置进度条样式
         $('#progressBar').css('width',percent + '%');
         $('#progressBar').html(percent + '%');
-      })
+      }),
+      success:function(res){
+      		uploading = false;
+        	alert('上传成功');
+        	window.location.reload();
+      },
+      error:function(res){
+        console.log("后台处理错误");
+      }
     });
  }
