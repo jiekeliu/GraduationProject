@@ -70,3 +70,35 @@ function checkVerificationCode(){
 		return 1;
 	}
 }
+//找回密码
+function getUserinfoByUemail(){
+	var uemail = $('#uemail').val();
+	var chk_res = checkEmeail(uemail);
+	if (!chk_res) {
+		alert("邮箱表达式错误，请重新输入");
+		$('#uemail').val("");
+		return;
+	} 
+	
+	$.post("../controller/getUserinfoByUemail.php", $('#emailform').serialize(),function (data) {
+	    	var data = JSON.parse(data);
+	    	console.log(data);  
+	    	if (data.code) {
+				var msg = JSON.parse(data.msg);
+				alert("用户 '"+msg['uname']+"' 的密码为："+msg['upwd']+", 请尽快更新密码，防止泄露");
+				window.location.reload();
+	    	} else{
+	    		alert(data.msg);
+	    	}    
+	    });
+}
+
+//邮箱格式校验函数
+function checkEmeail(email){
+	var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/; //邮箱js正则
+	if(reg.test(email)){
+		return 1;
+	}else{
+		return 0;
+	}
+}

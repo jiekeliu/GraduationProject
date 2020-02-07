@@ -41,7 +41,7 @@ class Sqlcontra{
 		$resources_add_sql ="CREATE TABLE IF NOT EXISTS `resources_add` (
 						  `Eid` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
 						  `Epid` int(11) NOT NULL COMMENT '关联编号',
-						  `Eurl` varchar(255) DEFAULT NULL COMMENT '缩略图地址',
+						  `Eurl` varchar(255) COMMENT '缩略图地址',
 						  `Edescription` text COMMENT '描述',
 						  `Efake` varchar(255) DEFAULT NULL COMMENT '伪标题',
 						  `Eextra` text COMMENT '扩展项',
@@ -148,7 +148,7 @@ class Sqlcontra{
 	/*resources表全部查询操作
 	*/
 	public function resources_selecAll(){
-		$str = "SELECT *FROM `resources`; ";
+		$str = "SELECT * FROM `resources`; ";
 		$re = mysql_query($str,$this->mysql_conn);
         if (!$re) {
 		    die("couldn't get the res:\n" . mysql_error());

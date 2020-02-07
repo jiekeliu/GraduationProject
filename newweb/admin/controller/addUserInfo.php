@@ -31,7 +31,7 @@ $act_res2 =$fun3->act_queryByEmail($uemail);
 //print_r($act_res2->getUid());
 
 $fun2 = new connFun;
-$aut_res =$fun2->authority_insert($Agrede, $act_res2->getUid(), '3|4');
+$aut_res =$fun2->authority_insert($Agrede, $act_res2->getUid(), '');
 
 if($act_res && $aut_res){
 	exit(json_encode(array('code'=>1,'msg'=>'更新成功')));

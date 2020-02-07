@@ -64,8 +64,8 @@ function setNavigationbar(){
 			if(tpid != 0){
 				bar_data[tpid].push(res[i]);
 			}
-	   }
-    	console.log(bar_data);
+	  	}
+		
     	var id;
     	var str = "";
     	$.each(bar_data[0],function(index,value){
@@ -104,7 +104,7 @@ function setNavigationbar(){
 function seeCookie(){
 	var ckie = getCookie('url');
 	if (!ckie) {
-		$('#cub').append("<li><a href='"+root+"index/view/dologin.html'>登录</a></li><li><a href='registation.html'>注册</a></li>");
+		$('#cub').append("<li><a href='"+root+"index/view/dologin.html'>登录</a></li><li><a href='register.html'>注册</a></li>");
 	} else{
 		$('#cub').append("<li><a href='"+root+"admin/view/index.html'>控制台</a></li><li><a href='javascript:;' onclick='delCookie();'>退出</a></li>");
 	}

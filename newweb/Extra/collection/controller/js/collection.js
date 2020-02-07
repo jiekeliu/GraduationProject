@@ -30,7 +30,7 @@ function getCollectionByNum(){
 	  		+"<td>"+res_data[page][i].Ssize+"</td>"
 	  		+"<td>"+res_data[page][i].Stype+"</td>"
 	  		+"<td>"+res_data[page][i].Ftype+"</td>"
-	  		+"<th><button type='button' class='btn btn-sm btn-default' data-toggle='modal' data-target='#changeModal' onclick=' getDetails("+res_data[page][i].Sid+")'>查看详情</button></th>"
+	  		+"<th><button type='button' class='btn btn-sm btn-default' onclick=' getDetails("+res_data[page][i].Sid+")'>查看详情</button></th>"
 	  		+"</tr>";
 		$('#itable').append(str);
 		$("#hiddenpage").html(page);
@@ -57,7 +57,6 @@ function pageContro(status){
 
 //页面跳转函数
 function getDetails(Sid){
-	console.log(Sid);
 	window.location.href = 'html/detail.html?Sid='+Sid;
 }
  

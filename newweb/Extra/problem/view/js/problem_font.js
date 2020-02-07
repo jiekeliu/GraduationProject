@@ -99,6 +99,10 @@ function setAnswerContent(data, Pthis, Pid){
 						+"</div>"
 					+"</div>"
 					+"<div style='height: 20px; width: 100%;'></div>";
+				var cookie = getCookie('unameid');
+				if (cookie) {
+					str +="<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#answerModel2' onclick='setAddProblem("+Pid+");'>我要回答</button>";
+				}
 				answerContent.append(str);
 			}
 		} else{

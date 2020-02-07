@@ -100,7 +100,7 @@ class Createtables{
 		*/
 		$sub_sql = "CREATE TABLE IF NOT EXISTS `submit_data` (
 		  `Did` int(11) NOT NULL AUTO_INCREMENT,
-		  `Uid` int(11) NOT NULL COMMENT '提交人id',
+		  `Uid` int(11) NOT NULL COMMENT '主题编号',
 		  `Data` text NOT NULL COMMENT '提交数据',
 		  `Dtype` varchar(255) NOT NULL COMMENT '数据类型',
 		  `Dtime` date NOT NULL COMMENT '提交时间',
