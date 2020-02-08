@@ -8,12 +8,17 @@ span:hover{
 	cursor:pointer;
 }
 
+.row{
+	padding: 0;
+	margin:0 ;
+}
+
 .content{
 	padding: 20px;
 }
 
 .content:hover{
-	border: 1px solid darkgray;
+	background-color: darkgray;
 	border-radius:5px ;
 }
 
@@ -30,6 +35,27 @@ span:hover{
 	background-color: #EEEEEE;
 	border-radius: 5px;
 	float: left;
+}
+
+.answer_title{
+	width: 85%;
+	margin-left:5% ;
+	min-height: 100px;
+	padding: 0 10px;
+	background-color: white;
+	border-radius: 5px;
+	float: left;
+	word-break:break-all;
+	overflow: hidden;
+}
+
+.answer_title > span{
+	margin-right: 10px;
+	float: right;
+}
+
+.answer_title > hr{
+	border-top: 2px solid grey;
 }
 
 .content_title > span{
@@ -70,30 +96,6 @@ span:hover{
 .listProblems{
 	margin: 20px 0;
 	border-top: 3px solid deepskyblue;
-}
-
-.announce{
-	width: 100%;
-	color: blue;
-	margin-top:20px ;
-	border: 1px solid deepskyblue;
-	background-color: #eee;
-	border-radius:40px 40px 10px 10px ;
-}
-
-.announce > h3{
-	letter-spacing: 8px;
-	text-align: center;
-}
-
-
-.announce > .announce_text{
-	width: 80%;
-	min-height: 200px;
-	margin: 20px auto;
-	background-color: white;
-	border-radius:5px ;
-	border: 1px solid deepskyblue;
 }
 
 .linkblock{

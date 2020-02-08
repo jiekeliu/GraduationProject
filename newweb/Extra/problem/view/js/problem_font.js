@@ -31,7 +31,7 @@ var res_dataForProblem; //全局问题数据
 //问题内容设置函数
 function setContent(data){
 	res_dataForProblem = data;
-	$("#listProblems").nextAll().remove();
+	$("#listProblems").children().remove();
 	if (data.length > 0) {
 		for (var i = 0; i < data.length ; i++) {
 			str = "<div class='row'>"
@@ -47,37 +47,40 @@ function setContent(data){
 									  	+"<span class='label label-success'>"+data[i]['Ptime']+"</span>"
 									  	+"<span class='label label-warning'>"+data[i]['Ptype']+"</span>"
 									+"</div>"
-									+"<div class='drop' onclick='getAnswerByPid("+data[i]['Pid']+", this);'>"
-										+"我是答案，点我 <span class='caret'></span> "
+									+"<p style='text-align: center;' onclick='getAnswerByPid("+data[i]['Pid']+");'>"
+									+"<a role='button' data-toggle='collapse' href='#problem"+data[i]['Pid']+"' aria-expanded='false' aria-controls='collapseExample'>"
+							  			+"我是答案，点我"
+									+"</a></p>"
+									+"<div class='collapse' id='problem"+data[i]['Pid']+"'>"
+									  +"<div class='well' id='answer"+data[i]['Pid']+"'>"
+									  +"</div>"
 									+"</div>"
-									+"<div class='answerContennier'></div>"
+									
 								+"</div>"
 							+"</div>"
 						+"</div>"
 					+"</div>";
-			$('#listProblems').after(str);
+			$('#listProblems').append(str);
 		}
 	} else{
 		var	str = "<h3>啊，没有搜索到相关结果哦</h3>";
-		$('#listProblems').after(str);
+		$('#listProblems').append(str);
 	}
 	
 }
 
-function getAnswerByPid(Pid, Pthis){
+function getAnswerByPid(Pid){
 	ProblemId = Pid;
 	var ans_data;
 	$.post("../controller/php/getAnswer.php", {Pid:Pid},function (data) {
     	ans_data = JSON.parse(data);
-    	setAnswerContent(ans_data, Pthis, Pid);
+    	setAnswerContent(ans_data,Pid);
    });
 }
 
 //答案内容设置函数
-function setAnswerContent(data, Pthis, Pid){
-	var answerContent = $(Pthis.nextSibling);
-	var childen = $(Pthis.children);
-	if (answerContent.css('display') == 'none') {
+function setAnswerContent(data, Pid){
+		var answerContent = $('#answer'+Pid);
 		answerContent.children().remove();
 		if (data.length > 0) {
 			for (var i = 0; i < data.length ; i++) {
@@ -88,7 +91,7 @@ function setAnswerContent(data, Pthis, Pid){
 									+"<div class='content_img'>"
 										+"<img src='img/omg1.jpg' alt='' class='img-circle'>"
 									+"</div>"
-									+"<div class='content_title'>"
+									+"<div class='answer_title'>"
 									  	+data[i]['Atext']
 									  	+"<hr />"
 									  	+"<span class='label label-success'>"+data[i]['Atime']+"</span>"
@@ -116,12 +119,6 @@ function setAnswerContent(data, Pthis, Pid){
 			}
 			answerContent.append(str);
 		}
-		answerContent.css('display','block');
-		childen.css('transform','rotate(180deg)');
-	} else{
-		answerContent.css('display','none');
-		childen.css('transform','rotate(0deg)');
-	}
 }
 
 //cookic查询函数

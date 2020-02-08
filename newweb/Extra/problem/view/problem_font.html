@@ -21,21 +21,21 @@
 		<div class="row">
 			<!----------------------------分割线-----left----------------------------------->
 			<div class="col-xs-12 col-md-9" >
-		
-				<hr id="listProblems" class="listProblems" / >	
-
+				
+				<div class="panel panel-info">
+				  <div class="panel-heading"> 
+				  	<h3>问题列表</h3>
+				  </div>
+				  <div class="panel-body" id="listProblems">
+				    <!--Panel content-->
+				  </div>
+				</div>
 			</div>
 			
 			<!----------------------------分割线-----left----------------------------------->
 			<!----------------------------分割线-----right----------------------------------->
 			<div class="col-xs-12 col-md-3">
-					<div class="announce">
-						<h3>公告栏</h3>
-						<div class="announce_text">
-							
-						</div>
-					</div>
-					<div style="width: 100%; height: 30px;"></div>
+			
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
 							<form class="form-inline">
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div style="width: 100%; height: 30px;"></div>
-					
+				
 					<div class="linkblock">
 						<span class="label label-warning" onclick="getProblemByType('PYTHON')">PYTHON</span>
 						<span class="label label-info" onclick="getProblemByType('PHP')"> PHP</span>

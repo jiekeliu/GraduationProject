@@ -12,6 +12,8 @@ if ($Pid == '') {
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：问题编号异常')));
 }
 $Atime = date('Y-m-d', time());
+$Atext = preg_replace('/\"/', '/\\"/', $Atext);
+$Atext = preg_replace('/\'/', "/\\'/", $Atext);
 //用户查询
 $uid = $_COOKIE["unameid"];
 include_once $_SERVER['DOCUMENT_ROOT'].'/model/sqlfunctions.php';

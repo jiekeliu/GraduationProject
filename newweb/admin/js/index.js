@@ -109,3 +109,7 @@ function exitSystem(){
 	deleteCookie();
     window.location.href ="../../index/view/index.html";
 }
+
+function attachMain(url){
+	$('#iframe').attr('src',url);
+}

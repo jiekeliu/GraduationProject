@@ -10,7 +10,14 @@ if ($Pid == '') {
 include_once "../../problem_sql.php";
 $sql = new Sqlcontra;
 $sql_res =$sql->answer_selectByPid($Pid );
-
+$sql_res[0]['Atext'] = htmtocode($sql_res[0]['Atext']);
 $sql_res = json_encode($sql_res);
 print_r($sql_res);
+
+function htmtocode($content){ 
+    $content = htmlspecialchars($content, ENT_QUOTES);
+    $content = str_replace(" ", "&nbsp;", $content); 
+    $content = str_replace("\n", "<br>",$content);    
+    return $content; 
+}
 ?>
