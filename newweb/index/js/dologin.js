@@ -17,14 +17,11 @@ $('#submit_btn').click(function () {
 	}
 	
 	var vcode = checkVerificationCode();
-//	console.log(vcode);
 	if (vcode) {
 		  $.post("../controller/dologin.php", $('#form').serialize(),function (data) {
 	    	var data = JSON.parse(data);
-//	    	console.log(data);  
 	    	if (data.code) {
-	    		alert(data.msg);
-	    		setTimeout(window.location.href ="../controller/checkCookie.php",1000);
+	    		window.location.href ="../controller/checkCookie.php";
 	    	} else{
 	    		alert(data.msg);
 	    		createVerificationCode();

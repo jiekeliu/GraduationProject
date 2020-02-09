@@ -51,16 +51,26 @@ function addUser(){
 		uemail:uemail,
 		Agrede:3
 	};
-	console.log(pre_data);
 	
-	$.post("../../admin/controller/addUserInfo.php", pre_data, function (data) {
-	  	console.log(data);
-    	var res = JSON.parse(data);
-    	if (res.code) {
-    		alert(res.msg);
-            setTimeout(function(){window.location.reload();},1000);
-        }else{
-            alert(res.msg);
-        }
+	$.post("../controller/checkUname.php", {uname:uname, uemail:uemail}, function (data) {
+		var data = JSON.parse(data);
+	  	var status = parseInt(data.code);
+	  	if (status) {
+	  		$.post("../../admin/controller/addUserInfo.php", pre_data, function (data) {
+		    	var res = JSON.parse(data);
+		    	if (res.code) {
+		    		alert(res.msg);
+		           	window.location.href = 'dologin.html';
+		        }else{
+		            alert(res.msg);
+		        }
+		    });
+	  	}else{
+	  		alert(data.msg);
+	  	}
     });
+	
+	
+	
+	
 }

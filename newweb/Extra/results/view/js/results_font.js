@@ -9,7 +9,6 @@ function getAllintro(){
 	$.post("php/getAllintro.php",function (data) {
 		var data = JSON.parse(data);
 		res_data = data;
-		console.log(data);
 		$.each(data,function(key,value){  //遍历键值对
            $('#pageli').before("<li><a href='javascript:;' onclick='setResultsList("+key+");'>"+key+"</a></li>");
            maxpage++;

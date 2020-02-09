@@ -5,6 +5,6 @@ $(document).ready(function(){
 });
 
 function resetHeight(){
-	var h = ($(document).height()-100);
-	$('#mainContent').css('min-height',h);
+	var h = ($(document).height()-80);
+	$('#mainContent').css('height',h);
 }

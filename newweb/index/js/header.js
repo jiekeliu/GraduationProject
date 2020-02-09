@@ -26,7 +26,7 @@ function getFontsetting(){
 function setFontsetting(data){
 	$("title").html(data[0]['web_name']);
 	$("#footer_text").html(data[0]['webfooter_info']);
-	var root = getRootPath();
+//	var root = getRootPath();
 	img_path = root + data[0]['webimg_url'];
 	$("#web_img").attr('src',img_path);
 }

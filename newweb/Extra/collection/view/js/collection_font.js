@@ -32,8 +32,6 @@ function resetData(data){
 		}
 	}
 	res_data = arr;
-	
-	console.log(res_data);
 }
 
 //附加资源获取根据
@@ -84,7 +82,6 @@ function getMusic(){
 		Surl = res_data['music'][i]['Surl'];
 		$.post("php/getAddreSources_font.php", {Sid:Sid, Surl:Surl}, function (data_add) {
 			var data_add = JSON.parse(data_add);
-			console.log(data_add);
 	    	setMusic(data_add);
 	   });
 	}

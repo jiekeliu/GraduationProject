@@ -6,7 +6,6 @@ $(document).ready(function(){
 function getStationMasterInfo(){
 	$.post("../controller/getStationMasterInfo.php",function (data) {
     	var data = JSON.parse(data);
-		console.log(data);
 		$("#name").val(data[0].name);
 		$("#profession").val(data[0].profession);
 //		$("#age").val(data[0].age);

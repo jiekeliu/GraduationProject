@@ -10,7 +10,6 @@ function getFontLog(){
 }
 //内容设置函数
 function setContent(data){
-	console.log(data);
 	for (var i = 0; i < data.length ; i++) {
 		str = "<div class='content'>"
 				+"<div class='content_top'>"
