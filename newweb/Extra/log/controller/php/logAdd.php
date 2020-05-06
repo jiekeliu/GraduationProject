@@ -17,6 +17,9 @@ if ($ltext == '') {
 	exit(json_encode(array('code'=>0,'msg'=>'后台提示：日志内容不能为空')));
 }
 
+$ltext = preg_replace('/\"/', '/\\"/', $ltext);
+$ltext = preg_replace('/\'/', "/\\'/", $ltext);
+
 include_once "../../log_sql.php";
 $sql = new Sqlcontra;
 $sql_res =$sql->log_insert($ltitle,$ltime,$ltext);

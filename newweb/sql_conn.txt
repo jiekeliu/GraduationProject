@@ -1,4 +1,4 @@
 localhost
-newweb09
+mysite
 root
 root
